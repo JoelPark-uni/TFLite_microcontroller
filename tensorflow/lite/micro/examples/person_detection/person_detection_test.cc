@@ -76,7 +76,7 @@ TF_LITE_MICRO_TEST(TestInvoke) {
   // Build an interpreter to run the model with.
   /* [빈칸] 아래 변수들을 사용하여 interpreter를 build하세요. */
   /* micro_op_resolver, tensor_arena, tensor_arena_size, error_reporter */
-  tflite::? ?(model, ?, ?, ?, ?);
+  tflite::MicroInterpreter ?(model, ?, ?, ?, ?);
 
   /* [빈칸] AllocateTensors()를 사용하여 tensor 메모리를 할당하세요. */
   interpreter.?;
@@ -113,8 +113,7 @@ TF_LITE_MICRO_TEST(TestInvoke) {
   }
   TF_LITE_MICRO_EXPECT_EQ(kTfLiteOk, invoke_status);
 
-  // Get the output from the model, and make sure it's the expected size and
-  // type.
+  // Get the output from the model, and make sure it's the expected size and type.
   /* [빈칸] interpreter의 output 멤버의 0번째 element를 통해 output tensor의 포인터를 받아오세요. */
   TfLiteTensor* output = ?.?(0);
  
@@ -133,7 +132,8 @@ TF_LITE_MICRO_TEST(TestInvoke) {
                        person_score, no_person_score);
 
   // Make sure that the expected "Person" score is higher than the other class.
-  /* person_score가 no_person_score보다 높은지 확인하세요. */
+  /* [빈칸] person_score가 no_person_score보다 높은지 확인하세요. */
+  /* [힌트] TF_LITE_MICRO_EXPECT_GT(A,B) 함수는 A > B인지 확인합니다. */
   TF_LITE_MICRO_EXPECT_?(?, ?);
 
   /* [빈칸] 입력 텐서(input->data.int8)에 input->bytes 크기의 g_no_person_image_data를 copy하세요. */
@@ -147,8 +147,7 @@ TF_LITE_MICRO_TEST(TestInvoke) {
   }
   TF_LITE_MICRO_EXPECT_EQ(kTfLiteOk, invoke_status);
 
-  // Get the output from the model, and make sure it's the expected size and
-  // type.
+  // Get the output from the model, and make sure it's the expected size and type.
   /* [빈칸] interpreter의 output 멤버의 0번째 element를 통해 output tensor의 포인터를 받아오세요. */
   output = ?.?(0);
 
@@ -169,7 +168,6 @@ TF_LITE_MICRO_TEST(TestInvoke) {
   
   // Make sure that the expected "No Person" score is higher.
   /* [빈칸] no_person_score가 person_score보다 높은지 확인하세요. */
-  /* [힌트] TF_LITE_MICRO_EXPECT_GT(A,B) 함수는 A > B인지 확인합니다. */
   TF_LITE_MICRO_EXPECT_GT(?, ?);
 
   TF_LITE_REPORT_ERROR(&micro_error_reporter, "Ran successfully\n");
